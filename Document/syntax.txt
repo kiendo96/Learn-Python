@@ -223,3 +223,107 @@ Ex:
     + Trên Object: method
 
 
+- Class:
+ex:
+#!/usr/bin/env python3
+
+class Person:
+    def __init__(self, name, color):
+        self.name = name
+        self.color = color
+    
+    #This is Instance method
+    def greet(self):
+        print("Hello, I'm Human")
+        print(f"\tMy name: {self.name}")
+        print(f"\tMy color: {self.color}")
+    
+    #This is class method
+    @classmethod
+    def class_method(cls):
+        print(f"This is class method: {cls}")
+
+    #this is static method
+    @staticmethod
+    def static_method():
+        print('This is static method')
+
+- Object:
+ex:
+person = Person("Kien Do", "Yellow")
+person.greet()
+
+
+
+//Tính kế thừa của class
+
+class Person:
+    def __init__(self, name, color):
+        self.name = name
+        self.color = color
+    
+    #This is Instance method
+    def greet(self):
+        print("Hello, I'm Human")
+        print(f"\tMy name: {self.name}")
+        print(f"\tMy color: {self.color}")
+    
+    #This is name
+    def get_name(self):
+        print(f"Name: {self.name}")
+
+    def get_sex(self):
+        print(f"Sex: {self.sex}")
+
+##Class ke thua class Person
+class Female(Person):
+    sex = 'Female'
+
+
+#Object
+female = Female("Quyet", "Yellow")
+female.greet()
+female.get_sex()
+
+
+- Lớp Female kế thừa toàn bộ thuộc tính(attribute) và phương thức(method) của lớp Person
+- Lớp cha và lớp con có attribute và method cùng tên nhau: Sẽ ưu tiên thực thi và gọi các attribute, method được khai báo trong lớp "được khởi tạo"
+- Lớp con truy cập attribute, method trong lớp cha: supper().parent_xxx()
+
+Ex truy cập attribute của lớp cha:
+
+class Person:
+    id = "Person"
+    def __init__(self, name, color):
+        self.name = name
+        self.color = color
+    
+    #This is Instance method
+    def greet(self):
+        print("Hello, I'm Human")
+        print(f"\tMy name: {self.name}")
+        print(f"\tMy color: {self.color}")
+    
+    #This is name
+    def get_name(self):
+        print(f"Name: {self.name}")
+
+    def get_sex(self):
+        print(f"Sex: {self.sex}")
+
+##Class ke thua class Person
+class Female(Person):
+    sex = 'Female'
+
+    def get_id(self):
+        print(f"Parent ID: { super().id }")
+    
+    #Destructor function(Mục đích sử dụng là sau khi mà object nó sẽ tự động được gọi khi object bị hủy "Thuờng được dùng để ngắt kết nối database để giảm phiên")
+    def __del__(self):
+        print("Female died")
+
+##Object
+female = Female("Luu Quyet", "yellow")
+female.greet()
+female.get_sex()
+female.get_id()
