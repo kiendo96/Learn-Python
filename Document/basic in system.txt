@@ -1,0 +1,54 @@
+//Cấu trúc 1 file python
+
+#!/usr/bin/env python3   //1
+
+## @Author: Kindt
+## @Date: 18-12-2022    //2
+
+def my_function():
+    my_name: str = "Do Trung Kien"
+    my_age: int = 27
+    print(f"My name is {my_name}, and my age is {my_age}")  //3
+
+my_function()
+
+1: Python interpreter sẽ thực thi file mã pyhton. Sử dụng /usr/bin/env để xác định interpreter
+2: (option) file header
+3: python sử dụng indent để xác định các code thuộc về cùng 1 block chức năng. Ví dụ: các code thuộc về hàm my_function sẽ có cùng 1 cấp indentation
+
+////PEP (Python Enhancement Proposal)
+- guidelines và best practices để viết code Python
+- Naming: tên phải mang tính gợi nhớ, ý nghĩa rõ ràng
+- function: Sử dụng chữ cái thường. Phân tách các từ bởi dấu gạch dưới (function_abc, make_decision)
+- variable: Sử dụng chữ cái thường. Có thể sử dụng một kí tự, một từ hoặc nhiều từ. Phân tách các từ bởi dấu gạch dưới (my_name, your_name)
+- class: Chữ cái đầu của mỗi từ là in hoa. Không phân tách các từ với nhau bằng dấu gạch dưới. Cách viết này được gọi là camel case (Animal, FlyingBird)
+- constant(Hằng số - Không thay đổi): Sử dụng chữ cái in hoa, một hoặc nhiều từ. Phân tách nhau bằng dấu gạch dưới (CONFIG, USER_NAME)
+
+
+- Code layout:
+    + Sử dụng 2 dòng trắng (blank line) để phân tách giữa 2 class
+    + Sử dụng 1 dòng trắng để phân tách các hàm trong cùng 1 class hoặc các hàm với nhau, hoặc phân tách logic 1 đoạn code
+    + Nên giới hạn độ dài 1 dòng code <80 ký tự
+
+- Indentation:
+    + Sử dụng space, Không sử dụng tab
+    + Độ dài 4 space
+
+- Commment: Bắt đầu bằng # và các comment nên cùng 1 indent
+
+- Docstring: Bắt đầu và kết thúc bằng 3 dấu nháy đôi """ code """
+
+
+///Execute Python Script
+1. Python shell
+- Thực thi từng dòng code và hiển thị kết quả cũng như lỗi khi thực thi
+
+2. Executable file:
+- File thực thi phải có quyền execute phù hợp với ownership của file đó
+- Python file phải có khai báo interpreter (shebang) rõ ràng, phù hợp
+- ./file.py
+
+3. Thực thi trực tiếp  với interpreter
+- Không yêu cầu file thực thi phải có quyền Executable
+- Không yêu cầu file thực thi có khai báo interpreter
+- Nếu có khai báo interpreter shebang trong file thực thi thì interpreter chỉ định sẽ overwrite

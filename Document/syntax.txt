@@ -1,0 +1,225 @@
+///1.Variable - 4 basic types of data
+- intergers: Số nguyên
+- Floats: Số thực
+- Strings: Chuỗi
+- Booleans: True, False
+
++> Variale là  1 biến và là 1 vị trí trong bộ nhớ (memory) được đặt tên để chứa một giá trị
+    + Nội dung của biến có thể thay đổi hoặc thay đổi theo thời gian
+    + variable asignment: <variable_name> = <expression>
+    + variable_name: Là tên được sử dụng để đặt cho biến theo quy tắc:
+        ++ Bắt đầu bằng chữ, hoặc gạch dưới _(undercore)
+        ++ Không thể bắt đầu bằng số
+        ++ Độ dài tối đa 256 kí tự
+        ++ Không chứa space
+        ++ Không chứa các kí tự đặc biệt
+
++>Dynamic typing
+    - Python là một ngôn ngữ có "dynamic typing": Các biến khai báo không cần ràng buộc type và được xác định lúc "runtime"
+    - Mặc dù là "dynamic typing" nhưng python được xem là "strong type" - Kiểu dữ liệu phải được xác định rõ ràng
+    - mypy: Công cụ dùng để kiểm tra kiểu dữ liệu (type checker) được thêm vào từ phiên bản python 3.5
+    - Cài đặt mypy:
+        #pip install mypy
+        #mypy source_file.py
+        #mypy --strict source_file.py
+
++> Printing
+- Print nhiều arguent:
+#print('hello', os.getlogin(), 'morning')
+hello ubuntu morning
+
+- Print with separator (Mặc định separator là 1 space):
+#print('a','b', sep='->')
+a->b
+
+- Print new line:
+#print('a \n b')
+a
+b
+
+- Print variable
+#name = kiendo
+#print(f"My name is {name}")
+My name is kiendo
+
+///2.Simple math operator
+
+- Python simple math operator:
+    + công +
+    + trừ -
+    + nhân *
+    + chia /
+    + mũ **
+    + chia lấy nguyên //  (ex: 10//6 -> 1)
+    + chia lấy dư % (ex: 10%6 = 4)
+
++> Standard operator module
+- Operator module: Cung cấp các hàm chức năng tương tự như simple math và nhiều hơn.
+
+Ex: 
+#import operator
+#operator.__file__
+'/usr/lib/python3.8/operator.py'    //standard module of python
+#a = 10
+#b = 2
+#operator.lt(a, b) //less than
+False
+#operator.gt(a, b)  //greater than
+True
+#operator.add(a, b)
+12
+#operator.sub(a, b)
+8
+
+
+
+///3.Condition - decision making
+if a == b:
+if a != b:
+if a < b:
+if a > b:
+if a <= b:
+if a >= b:
+
+
+///4.Function (hàm)
+- Là một đoạn code được tổ chức để thực hiện 1 tác vụ nào đó, chỉ được chạy khi được gọi và có tính tái sử dụng
+- Function có thể được cho các giá trị đầu vào (pass data, parameters) và trả về các kết quả hoặc không
+
+def my_function():
+    print("Hello world!")   //Hàm cơ bản
+my_function()
+
+def other_funtion(name): //Hàm có tuyền vào tham số (data)
+    print("Hello {name}")   
+
+other_funtion("kiendo")
+
+
+def another_function(a,b):   //Hàm có truyền vào tham số (data) và trả ra kết quả
+    return a+b
+c= = another_function(2,5)
+print(c)
+
+
+==> Các đoạn function ở trên được gọi là user define function
+
+- Buil-in function: là các hàm được thiết kế sẵn và sẵn sàng để sử dụng mà không cần phải viết mới, đi cùng với bản cài đặt Python. Có rất nhiều built-in function có sẵn trong python
+
+- Các built-in function phổ biến nhất:
+    + input: Lấy input từ user. Ex: your_name = input("What is your name:")
+    + type: Xác định type của bất kì một biến hoặc một giá trị:
+        type_of_10 = type(10)
+        var = "I'm Robot " -> type_of_var = type(var)
+    +conversion function: Thay đổi giá trị từ một kiểu dữ liệu sang một kiểu dữ liệu khác
+        int: Chuyển từ kiểu dữ liệu thích hợp sang interger. Ex: dollar = "10" => dollar_num = int(dollar)
+        float: Chuyển từ kiểu dữ liệu thích hợp sang float. Ex: grade = "9.5" => grade_num = float(grade)
+        str: Chuyển từ kiểu dữ liệu thích hợp sang string. Ex: street_num = 86 => street = str(street_num)
+
+////5.Error
+- Là các lỗi xảy ra trong quá trình code, dẫn đến kết quả không mong muốn xảy ra khi chương trình được thực thi
+- Có thể phân loại thành 3 loại lỗi
+    + Syntax Error: Các lỗi liên quan đến khai báo biến, cú pháp, indentation. Python interpreter sẽ kiểm tra loại này trước tiên khi python code được chạy
+    + Exception error: Sau khi vượt qua "syntax check", code được thực thi có thể xảy ra lỗi (runtime error). Ví dụ lỗi xảy ra khi cộng một số với một chuỗi hoặc chia một số cho 0
+    + Logic error: Không xảy ra syntax error và exception error nhưng kết quả không như mong muốn
+
+ //5.Error - Exception:
+
+- Cú pháp tổng quát:
+try:
+    #code       //1. Đoạn code được thực thi và cần được kiểm tra Exception có xảy ra hay không
+except <ExceptionType>:
+    # code      //2. Đoạn code được thực thi tương ứng với loại Exception xảy ra
+else:
+    #code       //3. Đoạn code được thực thi nếu không có Exception nào xảy ra
+finally:
+    #code       //4. Đoạn code luôn được thực thi dù có hay không Exception xảy ra
+
+
+///6.Data structure
+- Ngoài 4 kiểu dữ liệu cơ bản (int, float, string, boolean), Python cung cấp các "Data structure":
+    + List: Tập hợp các item thứ tự, có thể thay đổi tăng/giảm số lượng item (mutable) //Có thể chỉnh sửa
+    + Tuple: Tập hợp các item như list nhưng không thể tăng/giảm số lượng item (immutable) //Thao tác trên tuples nhanh hơn list vì tính immutable của tuples
+    + Dictionary: Tập hợp các item được tổ chức bởi một cặp "key": "value", Không theo thứ tự, cỏ thể thay đổi tăng/giảm số lượng item (mutable)
+    + Set: Tập hợp các item duy nhất, không trùng lặp, có thể thay đổi tăng/giảm số lượng item(mutable)
+    + Frozenset: Giống như Set nhưng không thể thay đổi tăng/giảm số lượng item(immutable)
+
+- Các Data structure này đều là object, nên các hàm chức năng được gọi là methods
+
+///6.1-List
+- Cấu trúc:
+    my_empty_list = []
+    my_list = ["a", 1, True, 9.5]
+- Access items in list:  my_list[index_number]
+- len(my_list): đếm số lượng item trong list
+
+- Các methods:
+    append(): Thêm 1 item vào list
+    extend(): thêm nhiều hơn một item vào list
+    count(): Đếm số lần item xuất hiện trong list
+    index(): search item và trả về index của item nếu có tồn tại, trả về ValueError nếu không tồn tại
+    clear(): Xóa toàn bộ item trong list
+    insert(): Chèn 1 item vào 1 vị trí trong list
+    remove(): remove "first occurence" trong list
+    pop(): remove last item trong list
+    sort(): Sắp xếp thứ tự các item (cùng type) trong list
+    reverse(): đảo ngược thứ tự item trong list
+
+
+
+///.9. File I/O
+
+- File I/O - Bao gồm việc tương tác với , directory trên hệ thống. Việc thao tác với file bao gồm các bước theo thứ tự sau:
+    1. Open file
+    2. Read/write file
+    3. Close file
+
+- Open file:
+    f = open("test.txt")  //Open file (Read) tai thu muc 
+    f = open("/tmp/test.txt")  //Open file with path
+
+    f = open("test.txt", 'w')  #Write in text mode
+    f = open("image.png", 'r+b') //read and write in binary mode
+
+    f = open("test.txt", 'a')   //Write in append mode
+    f = open("test.txt", 'a+')  //Read + write in append mode
+
+
+- Đọc từng dòng:
+    + style 1:
+f = open('file', 'r')
+for line in f:
+    print(line)
+f.close()
+
+    + stype 2:
+f = open('file1', 'r')
+while True:
+    line = f.readline()
+    if not line:
+        break
+    print(line)
+f.close()
+
+
+- Read toàn bộ nội dung trong file:
+f = open('file', 'r')
+all = f.read()
+print(all)
+
+
+///10.Class
+- Python là 1 ngôn ngữ lập trình hướng đối tượng - Object-oriented programing - OOP
+- Object: Là một sự "đóng gói" (encapsulated) của data (variable) và các function thao tác trên các Data. Class là template/blueprint để tạo nên Object
+
+Ex:
+-> Class con người, bao gồm các "data" như cân nặng, chiều cao, màu da, giới tính .... và các function như đi lại, ăn uống, làm việc, làm đẹp
+-> "Đỗ Trung Kiên" chính là object được tạo nên từ template "con người", một hiện thực hóa lớp trừu tượng "Con người"
+
+
+
+- Các hàm định nghĩa thao tác trên dữ liệu của class:
+    + Trong Class: function
+    + Trên Object: method
+
+
